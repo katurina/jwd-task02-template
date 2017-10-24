@@ -1,5 +1,7 @@
 package dao;
 
-public interface ApplianceDAO {
+import entity.XMLElem;
 
+public interface ApplianceDAO {
+	XMLElem parse();
 }

@@ -1,1 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<robots xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.example.com/robots_market"
+        xsi:schemaLocation="http://www.example.com/robots_market  robots_market.xsd">
+    <robot id="NM12">
+        <code>UY1200IO</code>
+        <power>1200</power>
+        <price>150</price>
+        <functions>
+            <cleaner>false</cleaner>
+            <cooker>false</cooker>
+            <builder>false</builder>
+            <babysitter>true</babysitter>
+            <protector>false</protector>
+        </functions>
+        <dims>
+            <width>12</width>
+            <height>3</height>
+            <length>15</length>
+            <weight>17</weight>
+        </dims>
+        <manufacturer>
+            <name>NMPCompany</name>
+            <country>Germany</country>
+            <telephone>528745823</telephone>
+        </manufacturer>
+    </robot>
+    <robot id="KL67">
+        <code>UI000PO</code>
+        <power>15000</power>
+        <price>5000</price>
+        <functions>
+            <cleaner>true</cleaner>
+            <cooker>true</cooker>
+            <builder>false</builder>
+            <babysitter>true</babysitter>
+            <protector>false</protector>
+        </functions>
+        <dims>
+            <width>5</width>
+            <height>30</height>
+            <length>9</length>
+            <weight>7</weight>
+        </dims>
+        <manufacturer>
+            <name>RobotCompany</name>
+            <country>Belarus</country>
+            <telephone>375333936027</telephone>
+        </manufacturer>
+    </robot>
+</robots>
