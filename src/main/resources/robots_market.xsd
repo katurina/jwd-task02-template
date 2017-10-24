@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns:tns="http://www.example.com/robots_market"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/robots_market"
+        elementFormDefault="qualified">
+    <element name="robots">
+        <complexType>
+            <sequence>
+                <element name="robot"
+                         type="tns:Robot"
+                         minOccurs="2"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Robot">
+        <sequence>
+            <element name="code" type="string"/>
+            <element name="power" type="positiveInteger"/>
+            <element name="price" type="positiveInteger"/>
+            <element name="functions" type="tns:function"/>
+            <element name="dims" type="tns:dim"/>
+            <element name="manufacturer" type="tns:manufacturer"/>
+        </sequence>
+        <attribute name="id" type="ID" use="required"/>
+    </complexType>
+    <complexType name="function">
+        <sequence>
+            <element name="cleaner" type="boolean"/>
+            <element name="cooker" type="boolean"/>
+            <element name="builder" type="boolean"/>
+            <element name="babysitter" type="boolean"/>
+            <element name="protector" type="boolean"/>
+        </sequence>
+    </complexType>
+    <complexType name="dim">
+        <sequence>
+            <element name="width" type="positiveInteger"/>
+            <element name="height" type="positiveInteger"/>
+            <element name="length" type="positiveInteger"/>
+            <element name="weight" type="positiveInteger"/>
+        </sequence>
+    </complexType>
+    <complexType name="manufacturer">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="country" type="string"/>
+            <element name="telephone" type="positiveInteger"/>
+        </sequence>
+    </complexType>
+</schema>
