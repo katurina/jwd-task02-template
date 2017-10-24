@@ -1,4 +1,4 @@
-package entity;
+package by.tc.task02.entity;
 
 import java.util.List;
 

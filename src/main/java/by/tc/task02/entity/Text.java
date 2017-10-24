@@ -1,4 +1,4 @@
-package entity;
+package by.tc.task02.entity;
 
 public class Text implements Node {
 	private String text;
@@ -26,13 +26,20 @@ public class Text implements Node {
 			return false;
 		}
 
-		Text text1 = (Text) o;
+		Text that = (Text) o;
 
-		return getText() != null ? getText().equals(text1.getText()) : text1.getText() == null;
+		return getText() != null ? getText().equals(that.getText()) : that.getText() == null;
 	}
 
 	@Override
 	public int hashCode() {
 		return getText() != null ? getText().hashCode() : 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Text{" +
+				"text='" + text + '\'' +
+				'}';
 	}
 }

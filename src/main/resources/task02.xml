@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <robots xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="http://www.example.com/robots_market"
-        xsi:schemaLocation="http://www.example.com/robots_market  robots_market.xsd">
-    <robot id="NM12">
+        xmlns="http://www.example.com/task02"
+        xsi:schemaLocation="http://www.example.com/task02 task02.xsd">
+    <robot id="NM12"
+    >
         <code>UY1200IO</code>
-        <power>1200</power>
-        <price>150</price>
+        <power>1200
+        </power
+        >
+        <price>150
+        </price>
         <functions>
             <cleaner>false</cleaner>
             <cooker>false</cooker>
             <builder>false</builder>
-            <babysitter>true</babysitter>
-            <protector>false</protector>
+            <babysitter>
+                true
+            </babysitter>
+            <protector>false
+            </protector>
         </functions>
+
         <dims>
             <width>12</width>
             <height>3</height>
@@ -22,7 +30,7 @@
         <manufacturer>
             <name>NMPCompany</name>
             <country>Germany</country>
-            <telephone>528745823</telephone>
+            <telephone>52874582583</telephone>
         </manufacturer>
     </robot>
     <robot id="KL67">

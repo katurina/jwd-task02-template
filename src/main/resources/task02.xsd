@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<schema xmlns:tns="http://www.example.com/robots_market"
+<schema xmlns:tns="http://www.example.com/task02"
         xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.example.com/robots_market"
+        targetNamespace="http://www.example.com/task02"
         elementFormDefault="qualified">
     <element name="robots">
         <complexType>

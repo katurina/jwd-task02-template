@@ -1,10 +1,15 @@
-package entity;
+package by.tc.task02.entity;
 
 public class XMLAttribute implements Node {
 	private String attrName;
 	private String attrValue;
 
 	public XMLAttribute() {
+	}
+
+	public XMLAttribute(String attrName, String attrValue) {
+		this.attrName = attrName;
+		this.attrValue = attrValue;
 	}
 
 	public String getAttrName() {
@@ -52,5 +57,13 @@ public class XMLAttribute implements Node {
 		int result = getAttrName() != null ? getAttrName().hashCode() : 0;
 		result = 31 * result + (getAttrValue() != null ? getAttrValue().hashCode() : 0);
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "XMLAttribute{" +
+				"attrName='" + attrName + '\'' +
+				", attrValue='" + attrValue + '\'' +
+				'}';
 	}
 }
