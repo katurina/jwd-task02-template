@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 public class ApplianceDAOImpl implements ApplianceDAO {
 
 	private final static Pattern FIRST_LINE = Pattern.compile("^(<\\?xml)");
-
 	//	private final static Pattern
 	private static final String FILE_NAME = "task02.xml";
 	private XMLElem root;
