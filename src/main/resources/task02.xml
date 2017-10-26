@@ -2,12 +2,9 @@
 <robots xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://www.example.com/task02"
         xsi:schemaLocation="http://www.example.com/task02 task02.xsd">
-    <robot id="NM12"
-    >
+    <robot id="NM12">
         <code>UY1200IO</code>
-        <power>1200
-        </power
-        >
+        <power>1200</power>
         <price>150
         </price>
         <functions>
