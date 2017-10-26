@@ -1,5 +1,6 @@
 package by.tc.task02.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class XMLElem implements Node {
@@ -13,6 +14,36 @@ public class XMLElem implements Node {
 
     public XMLElem(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<XMLAttribute> getAttrs() {
+        if (attrs == null) {
+            attrs = new ArrayList<>();
+        }
+        return attrs;
+    }
+
+    public void setAttrs(List<XMLAttribute> attrs) {
+        this.attrs = attrs;
+    }
+
+    public List<Node> getNodes() {
+        if (nodes == null) {
+            nodes = new ArrayList<>();
+        }
+        return nodes;
+    }
+
+    public void setNodes(List<Node> nodes) {
+        this.nodes = nodes;
     }
 
     @Override
@@ -63,27 +94,4 @@ public class XMLElem implements Node {
                 '}';
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<XMLAttribute> getAttrs() {
-        return attrs;
-    }
-
-    public void setAttrs(List<XMLAttribute> attrs) {
-        this.attrs = attrs;
-    }
-
-    public List<Node> getNodes() {
-        return nodes;
-    }
-
-    public void setNodes(List<Node> nodes) {
-        this.nodes = nodes;
-    }
 }

@@ -5,17 +5,13 @@
     <robot id="NM12">
         <code>UY1200IO</code>
         <power>1200</power>
-        <price>150
-        </price>
+        <price>150</price>
         <functions>
             <cleaner>false</cleaner>
             <cooker>false</cooker>
             <builder>false</builder>
-            <babysitter>
-                true
-            </babysitter>
-            <protector>false
-            </protector>
+            <babysitter>true</babysitter>
+            <protector>false</protector>
         </functions>
 
         <dims>

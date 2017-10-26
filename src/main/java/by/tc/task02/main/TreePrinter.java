@@ -10,8 +10,11 @@ import java.util.List;
 
 public class TreePrinter {
 
-    public static void print(XMLElem element, String space) {
+    public static void print(XMLElem root) {
+        print(root, " ");
+    }
 
+    private static void print(XMLElem element, String space) {
         System.out.println(space + "name:" + element.getName());
         printAttributes(space, element);
         System.out.println(space + "nodes:");
@@ -51,10 +54,6 @@ public class TreePrinter {
                     + "=\""
                     + attribute.getAttrValue() + "\"");
         }
-    }
-
-    public static void print(XMLElem root) {
-        print(root, " ");
     }
 }
 

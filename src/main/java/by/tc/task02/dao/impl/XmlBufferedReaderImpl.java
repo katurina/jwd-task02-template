@@ -11,10 +11,14 @@ import java.io.UnsupportedEncodingException;
 
 public class XmlBufferedReaderImpl implements XmlBufferedReader {
 
-    private static final String UTF_8 = "UTF-8";
-
     private BufferedReader bufferedReader;
-    private String reservoir = "";
+    private static final String UTF_8 = "UTF-8";
+    private static final String LAST_BRACKET = ">";
+    private static final String FIRST_LINE_XML = "<?xml";
+    private static final String SPACE_LINKER_LINES = " ";
+    private static final int BEGIN_OF_LINE = 0;
+    private static final int INCLUDING_LAST_BRACKET = 1;
+    private String buffer = "";
 
 
     public XmlBufferedReaderImpl(InputStream inputStream) throws XmlDAOException {
@@ -31,29 +35,38 @@ public class XmlBufferedReaderImpl implements XmlBufferedReader {
         } catch (IOException e) {
             throw new XmlDAOException(e);
         }
-
     }
 
     @Override
     public String readLine() throws XmlDAOException {
         String element;
+        String line;
         try {
-            while (!reservoir.contains(">")) {
-                if (reservoir.isEmpty()) {
-                    reservoir = bufferedReader.readLine().trim();
+            while (!buffer.contains(LAST_BRACKET) && (line = bufferedReader.readLine()) != null) {
+                if (line.isEmpty() || line.contains(FIRST_LINE_XML)) {
+                    continue;
+                }
+                if (buffer.isEmpty()) {
+                    buffer = line.trim();
                 } else {
-                    reservoir = reservoir + " " + bufferedReader.readLine().trim();
+                    buffer = buffer + SPACE_LINKER_LINES + line.trim();
                 }
             }
 
-            element = reservoir.substring(0, reservoir.indexOf('>'));
-            reservoir = reservoir.substring(reservoir.indexOf('>') + 1, reservoir.length());
+            element = getElement();
+            buffer = getPartAfterElement();
             return element;
 
         } catch (IOException e) {
             throw new XmlDAOException(e);
         }
-
     }
 
+    private String getElement() {
+        return buffer.substring(BEGIN_OF_LINE, buffer.indexOf(LAST_BRACKET) + 1);
+    }
+
+    private String getPartAfterElement() {
+        return buffer.substring(buffer.indexOf(LAST_BRACKET) + INCLUDING_LAST_BRACKET);
+    }
 }

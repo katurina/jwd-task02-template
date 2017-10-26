@@ -5,6 +5,6 @@ import by.tc.task02.entity.XMLElem;
 
 public interface XmlParser {
 
-    XMLElem getRoot() throws XmlDAOException;
+    XMLElem parseXML() throws XmlDAOException;
 
 }

@@ -13,7 +13,7 @@ public class XmlFileDAOImpl implements XmlFileDAO {
     public XMLElem readXml(InputStream inputStream) throws XmlDAOException {
         try (XmlBufferedReader XmlBufferedReader = new XmlBufferedReaderImpl(inputStream)) {
             XmlParser xmlParser = new XmlParserImpl(XmlBufferedReader);
-            return xmlParser.getRoot();
+            return xmlParser.parseXML();
         }
     }
 }
