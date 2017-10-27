@@ -12,13 +12,14 @@ import java.io.UnsupportedEncodingException;
 public class XmlBufferedReaderImpl implements XmlBufferedReader {
 
     private BufferedReader bufferedReader;
+    private StringBuilder buffer = new StringBuilder();
+
     private static final String UTF_8 = "UTF-8";
     private static final String CLOSE_BRACKET = ">";
     private static final String FIRST_LINE_XML = "<?xml";
     private static final String SPACE_LINKER_LINES = " ";
     private static final int BEGIN_OF_LINE = 0;
     private static final int INCLUDING_LAST_BRACKET = 1;
-    private StringBuilder buffer = new StringBuilder();
 
 
     public XmlBufferedReaderImpl(InputStream inputStream) throws XmlDAOException {

@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 public class XmlParserImpl implements XmlParser {
 
     private XmlBufferedReader xmlBufferedReader;
+    private Deque<XMLElem> controlList = new LinkedList<>();
+
     private static final Pattern OPEN_TAG = Pattern.compile("<[^/][^<>]*>");
     private static final Pattern CLOSE_TAG = Pattern.compile("</[^<>]+>");
     private static final Pattern TAGS_ATTRIBUTES = Pattern.compile("([\\w-:]+)=\"([^\"]+)\"");
@@ -25,8 +27,6 @@ public class XmlParserImpl implements XmlParser {
     private static final String ATTRIBUTE_SIGN = "\"";
     private static final String SPACE_BEFORE_ATTRIBUTE = " ";
     private static final int NEXT_SYMBOL = 1;
-    private Deque<XMLElem> controlList = new LinkedList<>();
-
 
     public XmlParserImpl(XmlBufferedReader xmlBufferedReader) {
         this.xmlBufferedReader = xmlBufferedReader;
