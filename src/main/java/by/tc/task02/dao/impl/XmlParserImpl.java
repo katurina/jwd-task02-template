@@ -22,7 +22,7 @@ public class XmlParserImpl implements XmlParser {
     private static final Pattern TAGS_ATTRIBUTES = Pattern.compile("([\\w-:]+)=\"([^\"]+)\"");
     private static final String OPEN_BRACKET = "<";
     private static final String CLOSE_BRACKET = ">";
-    private static final String CHECKER_GET_ATTRIBUTE = "\"";
+    private static final String ATTRIBUTE_SIGN = "\"";
     private static final String SPACE_BEFORE_ATTRIBUTE = " ";
     private static final int NEXT_SYMBOL = 1;
     private Deque<XMLElem> controlList = new LinkedList<>();
@@ -37,26 +37,26 @@ public class XmlParserImpl implements XmlParser {
         String element;
         while (!(element = xmlBufferedReader.readLine()).isEmpty()) {
             element = element.trim();
-            checkSortElement(element);
+            processElement(element);
         }
         return controlList.getFirst();
     }
 
-    private void checkSortElement(String element) {
+    private void processElement(String element) {
         if (OPEN_TAG.matcher(element).matches()) {
             initTag(element);
         } else if (CLOSE_TAG.matcher(element).matches()) {
-            linkCloseTag();
+            linkTag();
         } else {
             String text = element.substring(0, element.indexOf(OPEN_BRACKET)).trim();
             linkText(text);
-            linkCloseTag();
+            linkTag();
         }
     }
 
     private void initTag(String tag) {
         String nameTag;
-        if (tag.contains(CHECKER_GET_ATTRIBUTE)) {
+        if (tag.contains(ATTRIBUTE_SIGN)) {
             nameTag = tag.substring(tag.indexOf(OPEN_BRACKET) + NEXT_SYMBOL, tag.indexOf(SPACE_BEFORE_ATTRIBUTE));
             tag = tag.substring(tag.indexOf(SPACE_BEFORE_ATTRIBUTE) + NEXT_SYMBOL, tag.lastIndexOf(CLOSE_BRACKET));
             XMLElem openTag = linkAttributes(tag, nameTag);
@@ -68,7 +68,7 @@ public class XmlParserImpl implements XmlParser {
 
     }
 
-    private void linkCloseTag() {
+    private void linkTag() {
         if (controlList.size() != 1) {
             XMLElem lastXMLElem = controlList.pollLast();
             controlList.peekLast().getNodes().add(lastXMLElem);

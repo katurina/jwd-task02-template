@@ -13,12 +13,12 @@ public class XmlBufferedReaderImpl implements XmlBufferedReader {
 
     private BufferedReader bufferedReader;
     private static final String UTF_8 = "UTF-8";
-    private static final String LAST_BRACKET = ">";
+    private static final String CLOSE_BRACKET = ">";
     private static final String FIRST_LINE_XML = "<?xml";
     private static final String SPACE_LINKER_LINES = " ";
     private static final int BEGIN_OF_LINE = 0;
     private static final int INCLUDING_LAST_BRACKET = 1;
-    private String buffer = "";
+    private StringBuilder buffer = new StringBuilder();
 
 
     public XmlBufferedReaderImpl(InputStream inputStream) throws XmlDAOException {
@@ -42,14 +42,14 @@ public class XmlBufferedReaderImpl implements XmlBufferedReader {
         String element;
         String line;
         try {
-            while (!buffer.contains(LAST_BRACKET) && (line = bufferedReader.readLine()) != null) {
+            while (buffer.indexOf(CLOSE_BRACKET) < 0 && (line = bufferedReader.readLine()) != null) {
                 if (line.isEmpty() || line.contains(FIRST_LINE_XML)) {
                     continue;
                 }
-                if (buffer.isEmpty()) {
-                    buffer = line.trim();
+                if (buffer.length() == 0) {
+                    buffer.append(line.trim());
                 } else {
-                    buffer = buffer + SPACE_LINKER_LINES + line.trim();
+                    buffer.append(SPACE_LINKER_LINES).append(line.trim());
                 }
             }
 
@@ -63,10 +63,10 @@ public class XmlBufferedReaderImpl implements XmlBufferedReader {
     }
 
     private String getElement() {
-        return buffer.substring(BEGIN_OF_LINE, buffer.indexOf(LAST_BRACKET) + 1);
+        return buffer.substring(BEGIN_OF_LINE, buffer.indexOf(CLOSE_BRACKET) + INCLUDING_LAST_BRACKET);
     }
 
-    private String getPartAfterElement() {
-        return buffer.substring(buffer.indexOf(LAST_BRACKET) + INCLUDING_LAST_BRACKET);
+    private StringBuilder getPartAfterElement() {
+        return buffer.delete(BEGIN_OF_LINE, buffer.indexOf(CLOSE_BRACKET) + INCLUDING_LAST_BRACKET);
     }
 }
