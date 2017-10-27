@@ -52,7 +52,6 @@ public class XmlBufferedReaderImpl implements XmlBufferedReader {
                     buffer.append(SPACE_LINKER_LINES).append(line.trim());
                 }
             }
-
             element = getElement();
             buffer = getPartAfterElement();
             return element;
